@@ -15,14 +15,15 @@
     //echo $status;
 
     // connect to db
-    $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100','Rich100', 'x');
+    $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100','Rich100', '');
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-    if (!$db) {
+    /*if (!$db) {
         echo 'Failed!';
     }
     else {
         echo 'Connected';
-    }
+    }*/
 
     // set up the SQL INSERT
     $sql = "INSERT INTO status (status) VALUES (:status)";
