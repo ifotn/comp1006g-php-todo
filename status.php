@@ -7,7 +7,7 @@
     <title>Status</title>
 </head>
 <body>
-    <form action="save-status.php" method="get">
+    <form action="save-status.php" method="post">
         <fieldset>
             <label for="status">Status:</label>
             <input name="status" id="status" />
