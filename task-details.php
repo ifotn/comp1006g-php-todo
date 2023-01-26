@@ -25,19 +25,28 @@
             <select name="statusId" id="status">
                 <?php
                 // connect
+                $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100', 'Rich100', 'x');
 
                 // write query
+                $sql = "SELECT * FROM status";
 
                 // create the command
+                $cmd = $db->prepare($sql);
 
                 // run the query
+                $cmd->execute();
 
                 // store query results in a var
+                $status = $cmd->fetchAll();
 
                 // loop and display as <option></option>
+                foreach ($status as $value) {
+                    echo '<option value="' . $value['statusId'] . 
+                        '">'. $value['status'] . '</option>';
+                }
 
                 // disconnect
-
+                $db = null;
                 ?>
             </select>
         </fieldset>
