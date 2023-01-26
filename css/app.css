@@ -1,0 +1,13 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=PT+Serif&family=Scope+One&display=swap');
+
+body {
+    font-family: 'Barlow', sans-serif;
+    font-family: 'PT Serif', serif;
+    font-family: 'Scope One', serif;
+}
+
+table {
+    width: 80%;
+    padding: 3px;
+}
