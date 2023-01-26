@@ -23,9 +23,22 @@
         <fieldset>
             <label for="statusId">Status:</label>
             <select name="statusId" id="status">
-                <option value="1">To Do</option>
-                <option value="2">Doing</option>
-                <option value="3">Done</option>
+                <?php
+                // connect
+
+                // write query
+
+                // create the command
+
+                // run the query
+
+                // store query results in a var
+
+                // loop and display as <option></option>
+
+                // disconnect
+
+                ?>
             </select>
         </fieldset>
         <button>Save</button>
