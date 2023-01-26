@@ -15,7 +15,7 @@
     $statusId = $_POST['statusId'];
 
     // connect
-    $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100','Rich100', '');
+    $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100','Rich100', 'x');
 
     // set up sql insert w/params
     $sql = "INSERT INTO tasks (name, user, priority, statusId) 
