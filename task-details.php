@@ -10,22 +10,22 @@
     <form action="save-task.php" method="post">
         <fieldset>
             <label for="name">Name:</label>
-            <textarea name="name" id="name"></textarea>
+            <textarea name="name" id="name" required></textarea>
         </fieldset>
         <fieldset>
             <label for="user">User:</label>
-            <input name="user" id="user" />
+            <input name="user" id="user" required type="email" />
         </fieldset>
         <fieldset>
             <label for="priority">Priority:</label>
-            <input name="priority" id="priority" type="number" />
+            <input name="priority" id="priority" type="number" required min="1" max="3" />
         </fieldset>
         <fieldset>
             <label for="statusId">Status:</label>
             <select name="statusId" id="status">
                 <?php
                 // connect
-                $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100', 'Rich100', 'x');
+                $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100', 'Rich100', '');
 
                 // write query
                 $sql = "SELECT * FROM status";
