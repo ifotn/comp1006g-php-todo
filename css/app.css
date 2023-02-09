@@ -11,3 +11,26 @@ table {
     width: 80%;
     padding: 3px;
 }
+
+h1 {
+    color: #455A64;
+}
+
+th {
+    background: #FF5722;
+    color: #FFFFFF;
+    font-size: large;
+    padding: 3px;
+}
+
+th:hover {
+    cursor: pointer;
+}
+
+tbody tr:nth-child(even) {
+    background: #CFD8DC;
+}
+
+main {
+    margin: 50px;
+}
