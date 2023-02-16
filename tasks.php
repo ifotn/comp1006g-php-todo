@@ -68,7 +68,10 @@
                 <td>' . $task['user'] . '</td>
                 <td>' . $task['priority'] . '</td>
                 <td>' . $task['status'] . '</td>
-                <td>           
+                <td class="centre">
+                    <a href="edit-task.php?taskId=' . $task['taskId'] .'" title="Edit">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>           
                     <a href="delete-task.php?taskId=' . $task['taskId'] . '"
                         title="Delete" onclick="return confirmDelete();">
                             <i class="fa-solid fa-trash-can"></i>

@@ -71,6 +71,11 @@ button:hover, .linkButton:hover {
 
 i {
     color: #FF5722;
+    margin: 10px;
+}
+
+.centre {
+    text-align: center;
 }
 
 /* header */
