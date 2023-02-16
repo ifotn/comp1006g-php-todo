@@ -27,6 +27,10 @@ th:hover {
     cursor: pointer;
 }
 
+td {
+    padding: 20px;
+}
+
 tbody tr:nth-child(even) {
     background: #CFD8DC;
 }
@@ -50,7 +54,7 @@ label {
     margin-left: 118px;
 }
 
-button {
+button, .linkButton {
     background: #FF5722;
     color: #FFFFFF;
     font-size: large;
@@ -58,10 +62,15 @@ button {
     padding: 8px 20px;
     border-radius: 10px;
     cursor: pointer;
+    text-decoration: none;
 }
 
-button:hover {
+button:hover, .linkButton:hover {
     background: #fe784f;
+}
+
+i {
+    color: #FF5722;
 }
 
 /* header */

@@ -11,8 +11,10 @@
     <!-- custom css -->
     <link rel="stylesheet" href="css/app.css" />
     <!-- https://www.kryogenix.org/code/browser/sorttable/ for column sorting -->
+    <!-- fontawesome CDN for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="js/sorttable.js" defer></script>
-
+    <script src="js/scripts.js" defer></script>
 </head>
 
 <body>
@@ -54,15 +56,24 @@
         $tasks = $cmd->fetchAll();
 
         // start html table format
-        echo '<table class="sortable"><thead><th>Name</th><th>User</th><th>Priority</th><th>Status</th></thead>';
+        echo '<table class="sortable"><thead><th>Name</th><th>User</th><th>Priority</th><th>Status</th><th>Actions</th>
+            </thead>';
 
         // 5. Use a foreach loop to iterate (cycle) through all the values in the $tasks variable. Inside this loop, use an echo command to display the name of each task. See https://www.php.net/manual/en/control-structures.foreach.php for details.
         foreach ($tasks as $task) {
+            // //<a href="delete-task.php" class="linkButton">
+                    //    Delete
             echo '<tr>
                 <td>' . $task['name'] . '</td>
                 <td>' . $task['user'] . '</td>
                 <td>' . $task['priority'] . '</td>
                 <td>' . $task['status'] . '</td>
+                <td>           
+                    <a href="delete-task.php?taskId=' . $task['taskId'] . '"
+                        title="Delete" onclick="return confirmDelete();">
+                            <i class="fa-solid fa-trash-can"></i>
+                    </a>
+                </td>
                 </tr>';
         }
 
