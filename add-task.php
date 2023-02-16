@@ -34,7 +34,7 @@
     <main>
         <h1>Task Details</h1>
 
-        <form action="save-task.php" method="post">
+        <form action="insert-task.php" method="post">
             <fieldset>
                 <label for="name">Name:</label>
                 <textarea name="name" id="name" required></textarea>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Saving Task Details...</title>
+    <title>Updating your Task...</title>
 </head>
 <body>
     <?php
@@ -14,8 +14,14 @@
     $priority = $_POST['priority'];
     $statusId = $_POST['statusId'];
     $ok = true; // flag to assess overall completeness of form data
+    $taskId = $_POST['taskId'];
 
     // validation 1 field at a time
+    if (empty($taskId)) {
+        echo '<p>Task Id is required.</p>';
+        $ok = false;
+    }
+
     if (empty($name)) {
         echo '<p>Name is required.</p>';
         $ok = false;
@@ -48,14 +54,14 @@
         $ok = false;
     }
 
-    // only connect and save if $ok is still true (no validtion errors)
+    // only connect and save if $ok is still true (no validation errors)
     if ($ok) {
         // connect
-        $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100','Rich100', '_');
+        $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100','Rich100', '');
 
         // set up sql insert w/params
-        $sql = "INSERT INTO tasks (name, user, priority, statusId) 
-            VALUES (:name, :user, :priority, :statusId)";
+        $sql = "UPDATE tasks SET name = :name, user = :user, priority = :priority, statusId = :statusId
+            WHERE taskId = :taskId";
 
         // create pdo command & populate vars into params
         $cmd = $db->prepare($sql);
@@ -63,6 +69,7 @@
         $cmd->bindParam(':user', $user, PDO::PARAM_STR, 100);
         $cmd->bindParam(':priority', $priority, PDO::PARAM_INT);
         $cmd->bindParam(':statusId', $statusId, PDO::PARAM_INT);
+        $cmd->bindParam(':taskId', $taskId, PDO::PARAM_INT);
 
         // run the insert
         $cmd->execute();
@@ -71,7 +78,10 @@
         $db = null;
 
         // show confirmation
-        echo "Task Saved";
+        echo "Task Updated";
+
+        // redirect. only add after confirming update code works properly
+        header('location:tasks.php');
     }
     ?>
 </body>

@@ -38,7 +38,7 @@
     </header>
     <main>
         <h1>Task List</h1>
-        <a href="task-details.php">Add a New Task</a>
+        <a href="add-task.php">Add a New Task</a>
         <?php
         // 1. Connect to the db. Host: 172.31.22.43, DB: dbNameHere, Username: usernameHere, PW: passwordHere
         $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100', 'Rich100', '');

@@ -56,7 +56,7 @@ $statusId = $task['statusId'];
     </header>
     <main>
         <h1>Edit Task</h1>
-        <form action="save-task.php" method="post">
+        <form action="update-task.php" method="post">
             <fieldset>
                 <label for="name">Name:</label>
                 <textarea name="name" id="name" required><?php echo $name; ?></textarea>
@@ -104,6 +104,7 @@ $statusId = $task['statusId'];
                 </select>
             </fieldset>
             <button class="btnOffset">Update</button>
+            <input name="taskId" id="taskId" value="<?php echo $taskId; ?>" type="hidden" />
         </form>
     </main>
 </body>
