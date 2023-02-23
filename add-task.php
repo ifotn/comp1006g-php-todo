@@ -50,5 +50,4 @@ require('includes/header.php');
         <button class="btnOffset">Save</button>
     </form>
 </main>
-</body>
-</html>
+<?php require('includes/footer.php'); ?>

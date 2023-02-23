@@ -1,8 +1,8 @@
 <?php
-$title = 'Resource Not Found';
+$title = 'Bad Request';
 require('includes/header.php');
 ?>
 <main>
-    <h1>Resource Not Found</h1>
+    <h1>Bad Request</h1>
 </main>
 <?php require('includes/footer.php'); ?>

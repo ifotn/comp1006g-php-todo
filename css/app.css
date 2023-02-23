@@ -1,10 +1,17 @@
 /* google font */
 @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300&family=PT+Serif&family=Scope+One&display=swap');
 
+html {
+    height: 100%;
+}
+
 body {
     font-family: 'Barlow', sans-serif;
     font-family: 'PT Serif', serif;
     font-family: 'Scope One', serif;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 table {
@@ -38,6 +45,11 @@ tbody tr:nth-child(even) {
 main {
     margin-left: 50px;
     margin-top: 100px;
+    flex: 1 0 auto;
+}
+
+main a, main a:visited {
+ color: #FF5722;
 }
 
 /* form elements */
@@ -53,6 +65,7 @@ label {
 .btnOffset {
     margin-left: 118px;
 }
+
 
 button, .linkButton {
     background: #FF5722;
@@ -90,6 +103,10 @@ header {
     width: 100%;
 }
 
+header h1 {
+    margin-left: 20px;
+}
+
 header h1 a, a:visited {
      text-decoration: none;
      color: #CFD8DC; 
@@ -118,4 +135,11 @@ header nav ul a, a:visited {
 
 header nav ul a:hover {
     color: #FFFFFF;
+}
+
+footer {
+    background-color: #607D8B;
+    color: #CFD8DC; 
+    text-align: center;
+    padding: 20px;
 }
