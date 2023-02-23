@@ -1,9 +1,12 @@
 <?php
+$title = 'Task Details';
+require('includes/header.php');
+
 // get taskId from url param using $_GET
 $taskId = $_GET['taskId'];
 
 // connect
- $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100', 'Rich100', '');
+require('includes/db.php');
 
 // fetch the selected task record with this taskId.  use fetch() not fetchAll() for single row queries
 $sql = "SELECT * FROM tasks WHERE taskId = :taskId";
@@ -23,37 +26,6 @@ $user = $task['user'];
 $priority = $task['priority'];
 $statusId = $task['statusId'];
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Task</title>
-    <!-- remove any custom browser styles -->
-    <link rel="stylesheet" href="css/normalize.css" />
-    <!-- custom css -->
-    <link rel="stylesheet" href="css/app.css" />
-</head>
-<body>
-    <header>
-        <h1>
-            <a href="#">PHP To-Do</a>
-        </h1>
-        <nav>
-            <ul>
-                <li>
-                    <a href="tasks.php">Tasks</a>
-                </li>
-                <li>
-                    <a href="#">Register</a>
-                </li>
-                <li>
-                    <a href="#">Login</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
     <main>
         <h1>Edit Task</h1>
         <form action="update-task.php" method="post">

@@ -51,7 +51,7 @@
     // only connect and save if $ok is still true (no validtion errors)
     if ($ok) {
         // connect
-        $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100','Rich100', '');
+        $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100','Rich100', 'Vda787-KJ_');
 
         // set up sql insert w/params
         $sql = "INSERT INTO tasks (name, user, priority, statusId) 

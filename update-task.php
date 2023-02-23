@@ -57,7 +57,7 @@
     // only connect and save if $ok is still true (no validation errors)
     if ($ok) {
         // connect
-        $db = new PDO('mysql:host=172.31.22.43;dbname=Rich100','Rich100', '');
+        require('includes/db.php');
 
         // set up sql insert w/params
         $sql = "UPDATE tasks SET name = :name, user = :user, priority = :priority, statusId = :statusId

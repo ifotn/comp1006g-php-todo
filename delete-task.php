@@ -3,7 +3,7 @@
 $taskId = $_GET['taskId'];
 
 // connect
-$db = new PDO('mysql:host=172.31.22.43;dbname=Rich100', 'Rich100', '');
+require('includes/db.php');
 
 // set up the SQL DELETE
 $sql = "DELETE FROM tasks WHERE taskId = :taskId";
