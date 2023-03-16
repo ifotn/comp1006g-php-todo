@@ -27,20 +27,32 @@ if ($ok) {
     // connect
     require('includes/db.php');
 
-    // hash the password
-    $password = password_hash($password, PASSWORD_DEFAULT);
-
-    // set up and run the insert using bindParam()
-    $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
+    // does username already exist?
+    $sql = "SELECT * FROM users WHERE username = :username";
     $cmd = $db->prepare($sql);
     $cmd->bindParam(':username', $username, PDO::PARAM_STR, 100);
-    $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
     $cmd->execute();
+    $user = $cmd->fetch();
+    if (empty($user)) {
+        // hash the password
+        $password = password_hash($password, PASSWORD_DEFAULT);
+
+        // set up and run the insert using bindParam()
+        $sql = "INSERT INTO users (username, password) VALUES (:username, :password)";
+        $cmd = $db->prepare($sql);
+        $cmd->bindParam(':username', $username, PDO::PARAM_STR, 100);
+        $cmd->bindParam(':password', $password, PDO::PARAM_STR, 255);
+        $cmd->execute();
+    }
+    else {
+        echo 'User already exists.<br />';
+        exit();
+    }        
 
     // disconnect
     $db = null;
 
     // redirect
-
+    header('location:tasks.php');
 }
 ?>
