@@ -48,7 +48,7 @@ main {
     flex: 1 0 auto;
 }
 
-main a, main a:visited {
+main a, main a:visited, .error {
  color: #FF5722;
 }
 
@@ -58,12 +58,12 @@ fieldset {
 }
 
 label {
-    width: 100px;
+    width: 150px;
     display: inline-block;
 }
 
 .btnOffset {
-    margin-left: 118px;
+    margin-left: 168px;
 }
 
 
@@ -142,4 +142,8 @@ footer {
     color: #CFD8DC; 
     text-align: center;
     padding: 20px;
+}
+
+#imgShowHide {
+    cursor: pointer;
 }
