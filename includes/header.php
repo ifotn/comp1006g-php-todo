@@ -25,12 +25,33 @@
                 <li>
                     <a href="tasks.php">Tasks</a>
                 </li>
-                <li>
-                    <a href="register.php">Register</a>
-                </li>
-                <li>
-                    <a href="login.php">Login</a>
-                </li>
+                <?php
+                // access the current session
+                if (session_status() == PHP_SESSION_NONE) {
+                    session_start(); 
+                }
+                
+                if (empty($_SESSION['user'])) {
+                ?>
+                    <li>
+                        <a href="register.php">Register</a>
+                    </li>
+                    <li>
+                        <a href="login.php">Login</a>
+                    </li>
+                <?php
+                }
+                else {
+                ?>
+                    <li>
+                        <a href="#"><?php echo $_SESSION['user'] ?></a>
+                    </li>
+                    <li>
+                        <a href="logout.php">Logout</a>
+                    </li>
+                <?php
+                }
+                ?>
             </ul>
         </nav>
     </header>

@@ -1,4 +1,7 @@
 <?php
+// auth check - this page is now private
+require('includes/auth.php');
+
 // read the selected taskId from the url param using $_GET
 $taskId = $_GET['taskId'];
 

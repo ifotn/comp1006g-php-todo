@@ -1,3 +1,7 @@
+<?php
+// auth check - this page is now private
+require('includes/auth.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

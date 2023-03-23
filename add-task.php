@@ -1,4 +1,7 @@
 <?php
+// auth check - this page is now private
+require('includes/auth.php');
+
 $title = 'Add a New Task';
 require('includes/header.php');
 ?>

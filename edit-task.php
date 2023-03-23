@@ -1,4 +1,7 @@
 <?php
+// auth check - this page is now private
+require('includes/auth.php');
+
 $title = 'Task Details';
 require('includes/header.php');
 
