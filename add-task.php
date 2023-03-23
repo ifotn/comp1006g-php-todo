@@ -12,10 +12,10 @@ require('includes/header.php');
             <label for="name">Name:</label>
             <textarea name="name" id="name" required></textarea>
         </fieldset>
-        <fieldset>
+        <!--<fieldset>
             <label for="user">User:</label>
             <input name="user" id="user" required type="email" />
-        </fieldset>
+        </fieldset>-->
         <fieldset>
             <label for="priority">Priority:</label>
             <input name="priority" id="priority" type="number" required min="1" max="3" />

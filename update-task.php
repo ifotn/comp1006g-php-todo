@@ -14,7 +14,7 @@ require('includes/auth.php');
     <?php
     // capture form inputs to vars
     $name = $_POST['name'];
-    $user = $_POST['user'];
+    $user = $_SESSION['user']; // $_POST['user'];
     $priority = $_POST['priority'];
     $statusId = $_POST['statusId'];
     $ok = true; // flag to assess overall completeness of form data

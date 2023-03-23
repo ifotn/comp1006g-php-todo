@@ -6,7 +6,7 @@ $title = 'Task Details';
 require('includes/header.php');
 
 // get taskId from url param using $_GET
-$taskId = $_GET['taskId'];
+$taskId = base64_decode($_GET['taskId']);
 
 if (empty($taskId) || !is_numeric($taskId)) {
     header('location:400.php');  // bad request http 400 error
@@ -33,6 +33,13 @@ $name = $task['name'];
 $user = $task['user'];
 $priority = $task['priority'];
 $statusId = $task['statusId'];
+
+// is the current user the owner of this task?
+if ($user != $_SESSION['user']) {
+    header('location:401.php');
+    exit();
+}
+
 ?>
 <main>
     <h1>Edit Task</h1>
@@ -41,10 +48,10 @@ $statusId = $task['statusId'];
             <label for="name">Name:</label>
             <textarea name="name" id="name" required><?php echo $name; ?></textarea>
         </fieldset>
-        <fieldset>
+        <!--<fieldset>
             <label for="user">User:</label>
             <input name="user" id="user" required type="email" value="<?php echo $user; ?>" />
-        </fieldset>
+        </fieldset> -->
         <fieldset>
             <label for="priority">Priority:</label>
             <input name="priority" id="priority" type="number" required min="1" max="3" value="<?php echo $priority; ?>" />
