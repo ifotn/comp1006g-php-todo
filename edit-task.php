@@ -33,6 +33,7 @@ $name = $task['name'];
 $user = $task['user'];
 $priority = $task['priority'];
 $statusId = $task['statusId'];
+$photo = $task['photo'];
 
 // is the current user the owner of this task?
 if ($user != $_SESSION['user']) {
@@ -43,7 +44,7 @@ if ($user != $_SESSION['user']) {
 ?>
 <main>
     <h1>Edit Task</h1>
-    <form action="update-task.php" method="post">
+    <form action="update-task.php" method="post" enctype="multipart/form-data">
         <fieldset>
             <label for="name">Name:</label>
             <textarea name="name" id="name" required><?php echo $name; ?></textarea>
@@ -89,8 +90,18 @@ if ($user != $_SESSION['user']) {
                 ?>
             </select>
         </fieldset>
+        <fieldset>
+            <label for="photo">Photo:</label>
+            <input type="file" name="photo" id="photo" />
+            <?php
+            if (!empty($photo)) {
+                echo '<img src="img/' . $photo . '" alt="Task Photo" />';
+            }
+            ?>
+        </fieldset>     
         <button class="btnOffset">Update</button>
         <input name="taskId" id="taskId" value="<?php echo $taskId; ?>" type="hidden" />
+        <input name="currentPhoto" id="currentPhoto" value="<?php echo $photo; ?>" type="hidden" />
     </form>
 </main>
 <?php require('includes/footer.php'); ?>
