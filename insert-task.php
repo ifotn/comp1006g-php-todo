@@ -18,6 +18,7 @@ require('includes/auth.php');
     $priority = $_POST['priority'];
     $statusId = $_POST['statusId'];
     $ok = true; // flag to assess overall completeness of form data
+    $photo = $_FILES['photo']; // capture file upload if any
 
     // validation 1 field at a time
     if (empty($name)) {
@@ -52,14 +53,31 @@ require('includes/auth.php');
         $ok = false;
     }
 
+    // file upload check, rename, and copy
+    if (!empty($photo['name'])) {
+        $tmp_name = $photo['tmp_name'];
+        $type = mime_content_type($tmp_name);
+
+        // file type validation: png or jpg only
+        if ($type != 'image/png' && $type != 'image/jpeg') {
+            echo '<p>Please upload a valid .png or .jpg file</p>';
+            $ok = false;
+            exit();
+        }
+
+        // use session id as prefix to prevent overwriting
+        $photoName = session_id() . '-' . $photo['name'];
+        move_uploaded_file($tmp_name, 'img/' . $photoName);
+    }
+
     // only connect and save if $ok is still true (no validtion errors)
     if ($ok) {
         // connect
         require('includes/db.php');
 
         // set up sql insert w/params
-        $sql = "INSERT INTO tasks (name, user, priority, statusId) 
-            VALUES (:name, :user, :priority, :statusId)";
+        $sql = "INSERT INTO tasks (name, user, priority, statusId, photo) 
+            VALUES (:name, :user, :priority, :statusId, :photo)";
 
         // create pdo command & populate vars into params
         $cmd = $db->prepare($sql);
@@ -67,6 +85,7 @@ require('includes/auth.php');
         $cmd->bindParam(':user', $user, PDO::PARAM_STR, 100);
         $cmd->bindParam(':priority', $priority, PDO::PARAM_INT);
         $cmd->bindParam(':statusId', $statusId, PDO::PARAM_INT);
+        $cmd->bindParam(':photo', $photoName, PDO::PARAM_STR, 100);
 
         // run the insert
         $cmd->execute();

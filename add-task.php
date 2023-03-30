@@ -7,9 +7,10 @@ require('includes/header.php');
 ?>
 <main>
     <h1>Add a New Task</h1>
-    <form action="insert-task.php" method="post">
+    <h5>* indicates Required fields</h5>
+    <form action="insert-task.php" method="post" enctype="multipart/form-data">
         <fieldset>
-            <label for="name">Name:</label>
+            <label for="name">Name: *</label>
             <textarea name="name" id="name" required></textarea>
         </fieldset>
         <!--<fieldset>
@@ -17,11 +18,11 @@ require('includes/header.php');
             <input name="user" id="user" required type="email" />
         </fieldset>-->
         <fieldset>
-            <label for="priority">Priority:</label>
+            <label for="priority">Priority: *</label>
             <input name="priority" id="priority" type="number" required min="1" max="3" />
         </fieldset>
         <fieldset>
-            <label for="statusId">Status:</label>
+            <label for="statusId">Status: *</label>
             <select name="statusId" id="status">
                 <?php
                 // connect
@@ -49,6 +50,10 @@ require('includes/header.php');
                 $db = null;
                 ?>
             </select>
+        </fieldset>
+        <fieldset>
+            <label for="photo">Photo:</label>
+            <input type="file" name="photo" id="photo" />
         </fieldset>
         <button class="btnOffset">Save</button>
     </form>

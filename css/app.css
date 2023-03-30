@@ -147,3 +147,7 @@ footer {
 #imgShowHide {
     cursor: pointer;
 }
+
+.thumb {
+    height: 75px;
+}

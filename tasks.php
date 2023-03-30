@@ -28,7 +28,7 @@ require('includes/header.php');
             $tasks = $cmd->fetchAll();
 
             // start html table format
-            echo '<table class="sortable"><thead><th>Name</th><th>User</th>
+            echo '<table class="sortable"><thead><th></th><th>Name</th><th>User</th>
                 <th>Priority</th><th>Status</th>';
             if (!empty($_SESSION['user'])) {
                 echo '<th>Actions</th>';
@@ -40,6 +40,12 @@ require('includes/header.php');
                 // //<a href="delete-task.php" class="linkButton">
                 //    Delete
                 echo '<tr>
+                        <td>';              
+                if (!empty($task['photo'])) {
+                    echo '<img src="img/'. $task['photo'] . '" alt="Task Image" 
+                        class="thumb" />';
+                }
+                echo  '</td>
                         <td>' . $task['name'] . '</td>';
 
                 if (!empty($_SESSION['user'])) {
