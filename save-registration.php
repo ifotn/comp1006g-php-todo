@@ -23,6 +23,24 @@ if ($password != $confirm) {
     $ok = false;
 }
 
+// recaptcha - call google api and check success / failure response
+$apiUrl = 'https://www.google.com/recaptcha/api/siteverify';
+$secret = '6Leq_mQlAAAAADbsaefXW96BOHjJ-wPTH3iAesCo';
+$response = $_POST['g-recaptcha-response'];
+
+// make the api call and parse the results
+$apiResponse = file_get_contents($apiUrl . '?secret=' . $secret . '&response=' . $response);
+$decodedResponse = json_decode($apiResponse);
+
+if ($decodedResponse->success == false) {
+    echo 'Are you human??';
+    $ok = false;
+}
+
+//print_r($apiResponse);
+//exit();
+
+
 if ($ok) {
     // connect
     require('includes/db.php');

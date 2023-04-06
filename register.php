@@ -33,7 +33,7 @@ require 'includes/header.php';
             <span id="pwMsg" class="error"></span>
         </fieldset>
         <button class="btnOffset g-recaptcha" onclick="return comparePasswords()"
-        data-sitekey="6LfffmUfAAAAAPT-MKey3AQoaohQ-nLiKWvbr9I7" 
+        data-sitekey="6Leq_mQlAAAAAGSQNgM9h0E5AVPmLTFu4m6yCBb1" 
         data-callback='onSubmit' 
         data-action='submit'>Register</button>
     </form>
